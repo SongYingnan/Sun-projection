@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .sun {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: orange;
+            box-shadow: 0px 0px 100px orange;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .name {
+            height: 200px;
+            text-align: center;
+            font-size: 70px;
+            font-family: '微软雅黑';
+            line-height: 200px;
+            text-align: center;
+            margin-top: 200px;
+
+        }
+
+    </style>
+    <script>
+        window.onload = function () {
+            var oSun = document.getElementById('sun');
+            var oN = document.getElementById('name');
+            document.onmousemove = function (ev) {
+                var sl = ev.pageX - oSun.offsetWidth / 2;
+                var st = ev.pageY - oSun.offsetHeight / 2;
+                oSun.style.left = sl + 'px';
+                oSun.style.top = st + 'px';
+                var x = oN.offsetLeft + oN.offsetWidth / 2 - ev.pageX;
+                var y = oN.offsetTop + oN.offsetHeight / 2 - ev.pageY;
+                var dis = Math.sqrt(x * x + y * y);
+                oN.style.textShadow = x / 3 + 'px ' + y / 3 + 'px ' + dis / 20 + 'px' + '#000';
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="sun" id="sun"></div>
+<p class="name" id="name">宋英男</p>
+</body>
+</html>
